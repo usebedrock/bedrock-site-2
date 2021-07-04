@@ -1,0 +1,33 @@
+/* Mini reset
+   ========================================================================== */
+
+html, body,
+h1, h2, h3, h4,
+p, ul, ol, li,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+figure {
+  padding: 0;
+  margin: 0;
+}

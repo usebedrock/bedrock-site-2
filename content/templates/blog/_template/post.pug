@@ -1,0 +1,22 @@
+extends /templates/_layouts/blog-detail
+
+block articleContent
+
+    .c-container-outer
+        .c-container-inner.c-container-inner-alt
+            .c-cols
+                .c-col-2
+                .c-col-12
+                    .c-article-list.c-limit-width
+                        article.c-article
+                            header.c-article-header
+                                h2 #{post.attributes.title}
+                                p
+                                    | Posted on #{post.attributes.date}&nbsp;
+                                    if post.attributes.time
+                                        | at #{post.attributes.time}&nbsp;
+                                    if post.attributes.author
+                                        | by #{post.attributes.author}
+                            .c-article-body.c-content!=marked(post.body)
+
+

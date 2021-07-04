@@ -1,0 +1,92 @@
+extends /templates/_layouts/master
+
+block body
+
+    .u-bg-dark.u-inverse-text(style='background-image: url(https://bedrockapp.org/wp-content/themes/bedrock/images/pattern.png); background-size: cover;')
+        include /templates/_includes/header
+        .c-container-outer
+            .c-container-inner.c-container-inner-alt
+                .c-cols
+                    .c-col-2
+                    .c-col-12
+                        .c-hero
+                            .c-content
+                                h1 A powerful tool to prototype websites, web applications and design systems.
+                                p Bedrock is a static site generator that enables design and dev teams to efficiently work together. It is a perfect tool for design agencies looking for a perfect deliverable for developers to work with, neatly splitting the line where coding designers shine and developers should take over.
+                                ul.c-horizontal-nav
+                                    li
+                                        a.c-btn(href='/documentation/basic-tutorial') Get Started
+                                    li.u-o-50
+                                        span MIT Licensed
+    main.c-container-outer
+        .c-container-inner.c-container-inner-alt
+            section.u-my-1.u-my-2-bp2
+                .c-cols
+                    .c-col-8
+                        .c-content
+                            .u-mt-3-bp2
+                                h2 Create complex prototypes with many UI states
+                                p
+                                    | One of the main features of Bedrock is the
+                                    |
+                                    strong page tree
+                                    | , which is a listing of every page in the prototype. The tree allows you to navigate to every page easily and get a clear overview of which screens exist. You can list the different states of screens to show off the depth of your design.
+                    .c-col-8
+                        img(src='https://bedrockapp.org/wp-content/themes/bedrock/images/tree.png')
+            section.u-my-1.u-my-2-bp2
+                .c-cols
+                    .c-col-8
+                        img(src='https://bedrockapp.org/wp-content/themes/bedrock/images/styleguide.png')
+                    .c-col-8
+                        .u-mt-3-bp2.c-content
+                            h2 Documentation made easy
+                            p Nobody likes writing documentation, but at least Bedrock makes it easy—and partly automatic! Document components, your project’s colors and typography or generate an index of icons from either an icon font or SVG files.
+            section.u-my-1.u-my-2-bp2
+                .c-cols
+                    .c-col-8
+                        .c-content
+                            h2 Properly maintained
+                            p Bedrock has been maintained as an open source projects with proper releases, an upgrade tool and blog for over 5 years.
+                    .c-col-8
+                        .c-content
+                            h2 From prototype to production
+                            p Bedrock provides configuration options to move from prototype to production. The documentation contains instructions for developers on how to convert a Bedrock prototype to their specific dev environment.
+            section.u-my-1.u-my-2-bp2
+                .c-cols
+                    .c-col-8
+                        .c-content
+                            h2 Start from scratch
+                            p Bedrock makes no assumptions about the base HTML and CSS you want to use for a project and allows you to use any framework you want - or none at all. We purposefully designed Bedrock to work with any CSS framework like Bootstrap, Tailwind or your own.
+                    .c-col-8
+                        .c-content
+                            h2 Optionality
+                            p A Bedrock-based project can grow according to the project needs. It might start with just a few templates, with no need for the tree navigation or the documentation. All options can be enabled or disabled through the configuration file.
+            section.u-my-1.u-my-2-bp2
+                .c-cols
+                    .c-col-8
+                        .u-mt-4-bp2
+                            .c-content
+                                h2 Use real data
+                                p Some things—like data tables—are time-intensive to draw in a visual app, but can be generated in a pinch using a bit of Javascript, HTML and CSS. Easily render data from a Javascript object to your templates to prototype a with real data.
+                    .c-col-8
+                        img(src='https://bedrockapp.org/wp-content/themes/bedrock/images/data.png')
+    .c-container-outer(style='background-image: url(https://bedrockapp.org/wp-content/themes/bedrock/images/pattern2.png); background-size: cover;')
+        .c-container-inner.c-container-inner-alt
+            section.u-my-1.u-my-2-bp2
+                .c-cols
+                    .c-col-8
+                        .u-my-2
+                            .u-p-2.u-bg-dark.c-content-box-behavior-1.u-inverse-text
+                                .c-content
+                                    h3 Get Bedrock
+                                    p Visit the repository for information on how to install and use Bedrock. Bedrock is MIT-licensed.
+                                    a.c-btn(href='https://github.com/usebedrock/bedrock') View on Github
+                    .c-col-8
+                        .u-my-2
+                            .u-p-2.u-bg-light.c-content-box-behavior-1
+                                .c-content
+                                    h3 Get started with the tutorial
+                                    p Follow our basic tutorial to get started with Bedrock within minutes.
+                                    a.c-btn(href='https://bedrockapp.org/documentation/basic-tutorial/') Get started
+
+    include /templates/_includes/footer

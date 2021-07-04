@@ -1,0 +1,52 @@
+extends /templates/_layouts/default
+
+block append pageVariables
+    -
+        let perPage = 4;
+        let lower = 0 + parseInt(page) * perPage;
+        let higher = perPage + parseInt(page) * perPage;
+        let posts = blogOverview.slice(lower,higher)
+
+        // Pagination
+        let hasNewerPage = false;
+        let hasOlderPage = false;
+        let olderPage;
+        let newerPage;
+        if (parseInt(page) === 1) {
+            hasOlderPage = true;
+            olderPage = parseInt(page)+1
+        } else if (parseInt(page) > 1) {
+            hasOlderPage = true;
+            hasNewerPage = true;
+            olderPage = parseInt(page)+1
+            newerPage = parseInt(page)-1
+        }
+
+block content
+
+    .c-container-outer
+         .c-container-inner.c-container-inner-alt
+             .c-cols
+                 .c-col-2
+                 .c-col-12
+                     .c-article-list
+                         each post in posts
+                             .c-article
+                                 header.c-article-header
+                                     h2
+                                         a(href="/blog/"+post.url) #{post.attributes.title}
+                                     p
+                                         | Posted on #{post.attributes.date}&nbsp;
+                                         if post.attributes.time
+                                             | at #{post.attributes.time}&nbsp;
+                                         if post.attributes.author
+                                             | by #{post.attributes.author}
+
+                                 .c-article-body.c-content!=marked(post.body)
+
+                     .c-pagination
+
+                        if hasNewerPage
+                            a.c-btn.previous(href='/blog/'+newerPage) Newer
+                        if hasOlderPage
+                            a.c-btn.next(href='/blog/'+olderPage) Older

@@ -1,0 +1,11 @@
+extends /templates/_layouts/default
+
+block content
+
+    .c-container-outer
+         .c-container-inner
+                .c-cols
+                     .c-col-4
+                         include /templates/_includes/side-nav
+                     .c-col-12
+                            .c-content.c-sheet!=marked(doc.body)

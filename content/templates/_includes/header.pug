@@ -1,0 +1,35 @@
+.c-container-outer
+    .c-container-inner
+        .c-main-nav.u-py-2
+            .c-toolbar
+                .c-toolbar-left
+                    .c-branding-mobile
+                        a(href='/')
+                            if !pathname || pathname.match(/^index$/)
+                                img(src='/images/logo-mark-only-white.svg')
+                            else
+                                img(src='/images/logo-mark-only.svg')
+                            .u-sr-accessible Bedrock
+                    .c-branding
+                        a(href='/')
+                            if !pathname || pathname.match(/^index$/)
+                                img(src='/images/logo-white.svg')
+                            else
+                                img(src='/images/logo-black.svg')
+                            .u-sr-accessible Bedrock
+                .c-toolbar-right
+                    nav.c-nav
+                        ul.c-horizontal-nav.c-horizontal-nav-blocks
+                            // Implemented selected state - .current-menu-item
+                            li.c-nav__item(class=!pathname?'current-menu-item':'')
+                                a(href='/') Home
+                            li.c-nav__item(class=pathname.match(/documentation/)?'current-menu-item':'')
+                                a(href='/documentation/index') Docs
+                            li.c-nav__item(class=pathname.match(/blog/)?'current-menu-item':'')
+                                a(href='/blog/1') Blog
+                            li.c-nav__item
+                                a(href='https://github.com/usebedrock/bedrock', target='_blank')
+                                    if !pathname || pathname.match(/^index$/)
+                                        img(src='/images/github-white.svg')
+                                    else
+                                        img(src='/images/github-black.svg')

@@ -1,0 +1,16 @@
+/* Base
+   ========================================================================== */
+
+html {
+  font-size: 50%;
+  @media (min-width: $bp2) {
+    font-size: 62.5%;
+  }
+}
+
+body {
+  font-family: $body-font-family;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: $body-color;
+}

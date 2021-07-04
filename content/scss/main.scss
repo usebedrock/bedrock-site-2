@@ -1,0 +1,784 @@
+/* ==========================================================================
+  Stylesheet for Bedrock website
+   ========================================================================== */
+
+@import "settings.colors";
+@import "settings.mixins";
+@import "settings.variables";
+
+@import "mini-reset";
+@import "base";
+
+/* Container
+   ========================================================================== */
+
+.c-container-outer {
+  width: 100%;
+}
+
+.c-container-inner {
+  max-width: 128rem;
+  margin: 0 auto;
+  padding: 0 $grid-gutter/2;
+}
+
+.c-container-inner-alt {
+  max-width: 96rem;
+}
+
+/* Column system
+   Using CSS grid
+   ========================================================================== */
+
+@supports (display: grid) {
+
+  .c-cols {
+    grid-gap: $grid-gutter;
+  }
+
+  @media (min-width: $bp2){
+
+    .c-cols {
+      display: grid;
+      grid-template-columns: repeat(16, 1fr);
+      grid-gap: $grid-gutter;
+    }
+
+    .c-col-1 { grid-column: span 1; }
+    .c-col-2 { grid-column: span 2; }
+    .c-col-3 { grid-column: span 3; }
+    .c-col-4 { grid-column: span 4; }
+    .c-col-5 { grid-column: span 5; }
+    .c-col-6 { grid-column: span 6; }
+    .c-col-7 { grid-column: span 7; }
+    .c-col-8 { grid-column: span 8; }
+    .c-col-9 { grid-column: span 9; }
+    .c-col-10 { grid-column: span 10; }
+    .c-col-11 { grid-column: span 11; }
+    .c-col-12 { grid-column: span 12; }
+    .c-col-13 { grid-column: span 13; }
+    .c-col-14 { grid-column: span 14; }
+    .c-col-15 { grid-column: span 15; }
+    .c-col-16 { grid-column: span 16; }
+
+    // @todo How to do push classes?
+    // @todo if we figure this out, remove placeholder divs from markup
+    //.c-col-push-1 { grid-column-end: 1; }
+    //.c-col-push-2 { grid-column-end: 2; }
+
+  }
+
+}
+
+/* Typography
+   ========================================================================== */
+
+.c-content {
+
+  @include muted-links;
+
+  h1 { font-size: 3.2rem; }
+  h2 { font-size: 2.4rem; }
+  h3 { font-size: 2.1rem; }
+  h4 { font-size: 1.6rem; }
+
+  h1, h2, h3 {
+    line-height: 1.25;
+    color: $heading-color;
+  }
+
+  h1, h2, h3, h4, p, ul, ol {
+    margin: 1.6rem 0;
+  }
+
+  h1, h2 {
+    font-weight: 700;
+  }
+
+  h3 {
+    font-weight: 500;
+  }
+
+  p, h4 {
+    margin: 0 0 1.6rem;
+  }
+
+  ul, ol {
+    margin-left: 2.4rem;
+  }
+
+  ol li {
+    list-style: decimal;
+  }
+
+  ul li {
+    list-style: disc;
+  }
+
+  code {
+    background: lighten($bg-light, 2%);
+  }
+
+  li code,
+  p code {
+    color: red;
+    display: inline-block;
+    padding: 0.4rem;
+  }
+
+  pre {
+    background: lighten($bg-light, 2%);
+    padding: 2rem;
+    overflow-x: scroll;
+  }
+
+  blockquote {
+    font-style: italic;
+    padding-left: 2rem;
+  }
+
+  iframe {
+    margin: 0 0 2rem;
+  }
+
+  hr {
+    border: none;
+    margin: 40px 0;
+    border-top: 1px solid #ABABAB;
+  }
+
+}
+
+
+/* Hero
+   ========================================================================== */
+
+.c-hero {
+  padding: 4rem 0;
+  @media (min-width: $bp2){
+    padding: 8rem 0;
+  }
+}
+
+/* Inverse text utility
+   ========================================================================== */
+
+.u-inverse-text {
+  color: #FFF;
+  h1, h2, h3, h4 {
+    color: #FFF;
+  }
+  a {
+    color: #FFF;
+  }
+  p {
+    color: rgba(#FFF,0.75);
+  }
+
+}
+
+/* Toolbar
+   ========================================================================== */
+
+.c-toolbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* c-horizontal-nav
+   ========================================================================== */
+
+.c-horizontal-nav.c-horizontal-nav { // Stupid hack to get more specificy than .c-content
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: inline-block;
+    list-style: none;
+    margin-right: 1em;
+  }
+
+}
+
+.c-horizontal-nav-blocks.c-horizontal-nav-blocks { // Stupid hack to override previous override (lol)
+  margin-right: 1.5rem;
+  li {
+    margin-right: 0;
+  }
+  a {
+    text-decoration: none;
+    padding: 1rem;
+    display: inline-block;
+
+    &:link, &:visited {
+      color: $body-color;
+      .u-inverse-text & {
+        color: #FFF;
+      }
+    }
+    &:hover {
+      background: rgba(#000,0.1);
+      .u-inverse-text & {
+        background: rgba(#FFF,0.1);
+      }
+    }
+  }
+  .current-menu-item a {
+    background: rgba(#000,0.1);
+    .u-inverse-text & {
+      background: rgba(#FFF,0.1);
+    }
+  }
+  .c-nav__item:last-child {
+    a {
+      padding: 0.2rem 1rem 0.8rem 1rem;
+    }
+    img {
+      padding: 0;
+      position: relative;
+      top: 0.7rem;
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+  }
+}
+
+/* c-btn
+   ========================================================================== */
+
+.c-btn {
+  display: inline-block;
+  background: $primary-color;
+  border-radius: 100px;
+  padding: 10px 30px;
+  text-decoration: none;
+  color: #FFF !important; // todo fix this !important statement
+  &:hover {
+    background: darken($primary-color, 10%);
+  }
+}
+
+/* Footer
+   ========================================================================== */
+
+.c-footer {
+  @include muted-links;
+}
+
+/* Content box behavior
+   ========================================================================== */
+
+.c-content-box-behavior-1 {
+  h1, h2, h3, h4 {
+    margin-top: 0;
+  }
+}
+
+
+/* Form styles (wordpress CP)
+   ========================================================================== */
+
+// Shared across text inputs and buttons
+input[type="submit"],
+input[type="text"],
+input[type="email"],
+input[type="url"],
+textarea {
+  font-family: $body-font-family;
+  border-radius: 3px;
+  font-size: 100%;
+  padding: 0.8rem;
+  width: 100%;
+  font-size: 1.6rem;
+  border: 1px solid $muted-alt;
+  font-size: 100%;
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 3px lighten($primary-color, 40%);
+    border-color: lighten($primary-color, 20%);
+    transition: box-shadow 0.18s ease-in-out;
+  }
+}
+
+input[type="submit"] {
+  color: #FFF;
+  padding: 0.7rem 0.4rem;
+  border: none;
+  background: $primary-color;
+  &:focus {
+    transition: box-shadow 0.18s ease-in-out, background 0.18s ease-in-out;
+    background: darken($primary-color, 10%);
+  }
+}
+
+textarea {
+  height: 12rem;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+}
+
+.comment-form,
+.comment-respond {
+  h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Comments (Wordpress copy/paste)
+   ========================================================================== */
+
+.c-article + .section-comment-form {
+  padding-top: 0;
+}
+
+.c-article-body {
+  @include links;
+}
+
+.c-content {
+
+  .comment-reply-title,
+  .comments-title {
+    font-size: 2.1rem;
+    margin-top: 0;
+  }
+
+  .comment-reply-title {
+    margin-bottom: 10/28*1em;
+  }
+
+   .comment-list {
+      margin: 0 0 3rem;
+      padding: 0 0 3rem;
+      border-bottom: 1px solid #CCC;
+      > li {
+        list-style: none;
+        border-bottom: 1px solid #CCC;
+        margin: 0 0 1.8em;
+        position: relative;
+        list-style: none;
+        clear: both;
+        p {
+          clear: both;
+        }
+        &:last-child {
+          border: none;
+          margin: 0;
+        }
+        &:last-child p:last-child {
+          margin: 0;
+        }
+        cite {
+          font-style: normal;
+        }
+        .comment-content {
+          margin-top: 1rem;
+        }
+        .comment__author {
+          float: left;
+        }
+        .comment__meta {
+          float: right;
+        }
+        .avatar {
+          display: none;
+          @media (min-width: $bp2) {
+            margin-left: -84px;
+            float: left;
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            display: block;
+            background: #eee;
+          }
+        }
+      }
+  }
+
+  .comment__header {
+    margin-bottom: 0.33em;
+  }
+
+  .comment__body {
+    line-height: 25/14*1;
+  }
+
+  .comment-notes {
+    color: #666;
+  }
+
+  .comment-awaiting-moderation {
+    padding: 0.2rem 0.5rem;
+    display: inline-block;
+    background: #FFDD4B;
+    color: #000;
+
+    em {
+      font-style: normal;
+    }
+  }
+
+}
+
+/* Pagination
+   ========================================================================== */
+
+.c-pagination {
+  @include clearfix;
+  // I think these classes are hardcoded in Wordpress pagination, so no namespacing here
+  .previous {
+    display: block;
+    float: left;
+  }
+  .next {
+    display: block;
+    float: right;
+  }
+}
+
+/* Article
+   ========================================================================== */
+
+.c-article {
+  margin: 0 0 $grid-gutter;
+  padding: 0 0 $grid-gutter;
+  border-bottom: 1px solid #CCC;
+}
+
+.c-article-header {
+  margin: 2rem auto;
+  @include links;
+  @include header-links;
+  @include links-border-behavior-inverse;
+  h1, h2, h3 {
+    color: $heading-color;
+  }
+  h2,
+  p {
+    padding: 0;
+    margin: 0;
+  }
+  p {
+    color: #96a0ac;
+    font-size: 1.4rem;
+  }
+}
+
+/* Side nav
+   ========================================================================== */
+
+.c-side-nav {
+
+  h4 {
+    margin-bottom: 0.5rem;
+  }
+  ul {
+    margin-bottom: 1rem;
+  }
+
+  position: sticky;
+  top: 20px;
+
+  a {
+    text-decoration: none;
+    display: block;
+    padding: $grid-gutter/4 $grid-gutter/2;
+    border-bottom: 1px solid desaturate(rgba($primary-color, 0.2), 100%);
+    &:link {
+      color: desaturate($primary-color, 100%);
+    }
+    &:visited {
+      color: desaturate(adjust-hue($primary-color, 50deg), 100%);
+    }
+    &:hover,
+    &:active {
+      color: desaturate(lighten($primary-color, 20%), 100%);
+    }
+  }
+  li:last-child a {
+    border: none;
+  }
+
+  .c-side-nav-selected {
+    background: rgba($body-color, 0.1);
+    color: $heading-color;
+  }
+}
+
+/* Utilities - Uncategorized
+   ========================================================================== */
+
+// Explicit list reset
+.u-list-reset {
+  padding: 0;
+  margin: 0;
+}
+
+// Screen reader accessible
+// Ref. https://webaim.org/techniques/css/invisiblecontent/
+.u-sr-accessible {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Utilities - Backgrounds
+   ========================================================================== */
+
+.u-bg-dark {
+  background: $bg-dark;
+}
+
+.u-bg-light {
+  background: $bg-light;
+}
+
+/* Utilities - Margin
+   ========================================================================== */
+
+$spacing-unit: $grid-gutter/2;
+
+// Margin generic (all)
+.u-m-1 { margin: $spacing-unit; }
+.u-m-2 { margin: $spacing-unit*2; }
+.u-m-3 { margin: $spacing-unit*3; }
+.u-m-4 { margin: $spacing-unit*4; }
+
+// Margin top
+.u-mt-1 { margin-top: $spacing-unit; }
+.u-mt-2 { margin-top: $spacing-unit*2; }
+.u-mt-3 { margin-top: $spacing-unit*3; }
+.u-mt-4 { margin-top: $spacing-unit*4; }
+
+@media (min-width: $bp2){
+  .u-mt-1-bp2 { margin-top: $spacing-unit; }
+  .u-mt-2-bp2 { margin-top: $spacing-unit*2; }
+  .u-mt-3-bp2 { margin-top: $spacing-unit*3; }
+  .u-mt-4-bp2 { margin-top: $spacing-unit*4; }
+}
+
+// Margin bottom
+.u-mb-1 { margin-bottom: $spacing-unit; }
+.u-mb-2 { margin-bottom: $spacing-unit*2; }
+.u-mb-3 { margin-bottom: $spacing-unit*3; }
+.u-mb-4 { margin-bottom: $spacing-unit*3; }
+
+@media (min-width: $bp2){
+  .u-mb-1-bp2 { margin-bottom: $spacing-unit; }
+  .u-mb-2-bp2 { margin-bottom: $spacing-unit*2; }
+  .u-mb-3-bp2 { margin-bottom: $spacing-unit*3; }
+  .u-mb-4-bp2 { margin-bottom: $spacing-unit*4; }
+}
+
+// Margin top and bottom (y-axis)
+
+.u-my-1 {
+  margin-top: $spacing-unit;
+  margin-bottom: $spacing-unit;
+}
+
+.u-my-2 {
+  margin-top: $spacing-unit*2;
+  margin-bottom: $spacing-unit*2;
+}
+
+.u-my-3 {
+  margin-top: $spacing-unit*3;
+  margin-bottom: $spacing-unit*3;
+}
+
+.u-my-4 {
+  margin-top: $spacing-unit*4;
+  margin-bottom: $spacing-unit*4;
+}
+
+@media (min-width: $bp2) {
+
+  .u-my-1-bp2 {
+    margin-top: $spacing-unit;
+    margin-bottom: $spacing-unit;
+  }
+
+  .u-my-2-bp2 {
+    margin-top: $spacing-unit*2;
+    margin-bottom: $spacing-unit*2;
+  }
+
+  .u-my-3-bp2 {
+    margin-top: $spacing-unit*3;
+    margin-bottom: $spacing-unit*3;
+  }
+
+  .u-my-4-bp2 {
+    margin-top: $spacing-unit*4;
+    margin-bottom: $spacing-unit*4;
+  }
+
+}
+
+/* Utilities - Padding
+   ========================================================================== */
+
+// Padding generic
+
+.u-p-1 { padding: $spacing-unit; }
+.u-p-2 { padding: $spacing-unit*2; }
+.u-p-3 { padding: $spacing-unit*3; }
+.u-p-4 { padding: $spacing-unit*4; }
+
+// Padding top and bottom (y-axis)
+
+.u-py-1 {
+  padding-top: $spacing-unit;
+  padding-bottom: $spacing-unit;
+}
+
+.u-py-2 {
+  padding-top: $spacing-unit*2;
+  padding-bottom: $spacing-unit*2;
+}
+
+.u-py-3 {
+  padding-top: $spacing-unit*3;
+  padding-bottom: $spacing-unit*3;
+}
+
+.u-py-4 {
+  padding-top: $spacing-unit*4;
+  padding-bottom: $spacing-unit*4;
+}
+
+@media (min-width: $bp2) {
+
+  .u-py-1-bp2 {
+    padding-top: $spacing-unit;
+    padding-bottom: $spacing-unit;
+  }
+
+  .u-py-2-bp2 {
+    padding-top: $spacing-unit*2;
+    padding-bottom: $spacing-unit*2;
+  }
+
+  .u-py-3-bp2 {
+    padding-top: $spacing-unit*3;
+    padding-bottom: $spacing-unit*3;
+  }
+
+  .u-py-4-bp2 {
+    padding-top: $spacing-unit*4;
+    padding-bottom: $spacing-unit*4;
+  }
+
+}
+
+/* Utilities - Opacity
+   ========================================================================== */
+
+.u-o-50 {
+  opacity: 0.5;
+}
+
+/* Sheet
+   ========================================================================== */
+
+@media (min-width: $bp2){
+  .c-sheet {
+    box-shadow: 0 0 4px 0 rgba($body-color, 0.33);
+    padding: $grid-gutter*1.5;
+  }
+}
+
+/* Wrapper for iframes like YouTube/Slideshare
+   ========================================================================== */
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 43%;
+  height: 0;
+  margin: 2rem 0;
+  &.aspect-2-3 {
+    padding-bottom: 66.67%; /* 3:2 */
+  }
+  &.aspect-16-9 {
+    padding-bottom: 56.25%; /* 16:9 */
+  }
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Branding logic switch
+   ========================================================================== */
+
+/* Branding
+   ========================================================================== */
+
+.c-branding-mobile,
+.c-branding {
+  img, a {
+    display: block;
+  }
+}
+
+.c-branding-mobile {
+  img {
+    display: block;
+    height: 2.4rem;
+    width: 2.6rem;
+  }
+}
+
+.c-branding {
+  display: none;
+}
+
+@media (min-width: $bp1){
+
+  .c-branding-mobile {
+    display: none;
+  }
+
+  .c-branding {
+    display: block;
+  }
+
+}
+
+
+/* c-table
+   ========================================================================== */
+
+.c-table {
+  width: 100%;
+}
+
+.c-table {
+  td,
+  th {
+      text-align: left;
+      border-bottom: 1px solid #DDD;
+      padding: 1rem;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+  }
+}
+
